@@ -4,6 +4,7 @@ import {SignUP,login,sendotproute, Fpassword,profile,addnewaddress} from "../con
 import {getcollections,getAll,getBoys,getGirls,getAccessories,getToys} from "../controllers/store.js"
 import {createorder,fetchAllOrders} from "../controllers/order.js"
 import {checkout,paymentverification} from "../controllers/payment.js"
+import {createblog,fetchBlog} from "../controllers/Blog.js"
 router.get("/",(req,res)=>{
     return(
         res.send("Welcome to the backend of Kudosware!")
@@ -41,6 +42,8 @@ router.post("/createorder",createorder);
 router.get("/fetchAllOrders",fetchAllOrders);
 
 
-
+//Blogs
+router.post("/createblog",createblog);
+router.get("/fetchBlog",fetchBlog);
 
 export default router;
