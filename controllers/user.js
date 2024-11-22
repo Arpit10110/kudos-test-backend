@@ -3,17 +3,30 @@ import { sendwelcomemail } from "../middleware/nodemail.js";
 import { sendOtpEmail } from "../middleware/sendotp.js";
 import { UserModel } from "../model/UserModel.js";
 export const SignUP = async (req, res) => {
-    const { Fname, Email, Phone, Password, address } = req.body; 
-    const newCustomer = {
-        first_name: Fname,
-        email: Email,
-        phone: Phone,
-        verified_email: true,
-        password: Password,
-        password_confirmation: Password,
-        addresses: address ,
-        send_email_welcome:false
-    };
+    const { Fname, Email, Phone, Password, address,AddressGiven } = req.body; 
+    let newCustomer;
+    if (AddressGiven == false){
+         newCustomer = {
+            first_name: Fname,
+            email: Email,
+            phone: Phone,
+            verified_email: true,
+            password: Password,
+            password_confirmation: Password,
+            send_email_welcome:false
+        };
+    }else{
+         newCustomer = {
+            first_name: Fname,
+            email: Email,
+            phone: Phone,
+            verified_email: true,
+            password: Password,
+            password_confirmation: Password,
+            addresses: address ,
+            send_email_welcome:false
+        };
+    }
 
     try {
         const existingCustomers = await shopify.customer.search({ email: Email });
