@@ -116,3 +116,24 @@ export const getToys = async (req, res) => {
         });
     }
 };
+
+
+export const productdetail = async (req, res) => {
+    try {
+        const { prodid } = req.body; 
+        const product = await shopify.product.get(prodid);
+
+        return res.json({
+            status: true,
+            message: "Product details fetched successfully",
+            data: product,
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            status: false,
+            message: "Error fetching product details",
+            error: error.message,
+        });
+    }
+};

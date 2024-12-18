@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import {SignUP,login,sendotproute, Fpassword,profile,addnewaddress} from "../controllers/user.js"
-import {getcollections,getAll,getBoys,getGirls,getAccessories,getToys} from "../controllers/store.js"
+import {getcollections,getAll,getBoys,getGirls,getAccessories,getToys, productdetail} from "../controllers/store.js"
 import {createorder,fetchAllOrders,getAllOrders} from "../controllers/order.js"
 import {checkout,paymentverification} from "../controllers/payment.js"
 import {createblog,fetchBlog} from "../controllers/Blog.js"
@@ -32,7 +32,7 @@ router.get("/getgirls",getGirls);
 router.get("/getaccessories",getAccessories);
 router.get("/gettoys",getToys);
 router.post("/addnewaddress",addnewaddress)
-
+router.post("/productdetail",productdetail)
 // Payments routes
 router.post("/checkout",checkout);
 router.post("/paymentverification",paymentverification);
